@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSLUWVxK7ZoQ2aFENq0j1iQGPmGRFRW6CpjmpF" crossorigin="anonymous">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="regularDiv">
+        This will change to show Date and Time.
+    </div>
+    <br>
+    <div id="reactDiv">
+        This will manually change to show Date and Time.
+    </div>
+
+    <script type="text/babel">
+        let rootNode = ReactDOM.createRoot(document.getElementById('reactDiv'));
+
+        const updateDateTime = () => {
+            let myStr = "<div> <h1>Date Time</h1><p>" + (new Date()).toString() + "</p></div>";
+            document.getElementById('regularDiv').innerHTML = myStr;
+
+            const MyDiv = (
+                <div>
+                    <h1>Date Time Display w/ Button</h1>
+                    {new Date().toString()}
+                    <br />
+                    <br />
+                    <button onClick={updateDateTime}>Update Date & Time</button>
+                </div>
+            );
+            rootNode.render(MyDiv);
+        };
+
+        updateDateTime();
+
+    
+        setInterval(updateDateTime, 2000);
+    </script>
+</body>
+
+</html>
